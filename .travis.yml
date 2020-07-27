@@ -14,3 +14,10 @@ after_success:
   - docker build -t gtseamus/multi-nginx ./nginx
   - docker build -t gtseamus/multi-server ./server
   - docker build -t gtseamus/multi-worker ./worker
+  # Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to DockerHub
+  - docker push gtseamus/multi-client
+  - docker push gtseamus/multi-nginx
+  - docker push gtseamus/multi-server
+  - docker push gtseamus/multi-worker
