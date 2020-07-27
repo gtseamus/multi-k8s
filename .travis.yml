@@ -8,3 +8,9 @@ before_install:
 
 script:
   - docker run -e CI=true gtseamus/react-test npm test
+
+after_success:
+  - docker build -t gtseamus/multi-client ./client
+  - docker build -t gtseamus/multi-nginx ./nginx
+  - docker build -t gtseamus/multi-server ./server
+  - docker build -t gtseamus/multi-worker ./worker
