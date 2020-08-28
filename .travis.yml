@@ -18,7 +18,7 @@ before_install:
   docker build -t gtseamus/react-test -f ./client/Dockerfile.dev
 
 script:
-  - docker run -e CI=true gtseamus/react-test npm run test
+  - docker run -e CI=true gtseamus/react-test npm test
 
 deploy:
   provider: script
